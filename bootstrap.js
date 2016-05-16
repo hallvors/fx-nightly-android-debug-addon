@@ -3,10 +3,18 @@ const { classes: Cc, interfaces: Ci, utils: Cu } = Components;
 Cu.import("resource://gre/modules/Services.jsm");
 
 var prefs = {
+  // If enabled, this will track whenever a JavaScript sets .src property of a video element
   debugVideoSrc:    false,
-  shimWindowEvent:  true,
+  // If enabled, this will create a window.event object mimicking IE's legacy event model
+  shimWindowEvent:  false,
+  // For any events listed here, the addon will log whether they fire and what the listener is
   logEvents:        ['click'],
-  // Note: log overrides ignore if event is listed in both
+  // Any events listed here will not be fired.
+  // (Note: this is done by overriding addEventListener() and making it impossible to add
+  // listeners for those events. This is not foolproof - the script is not (yet) overriding
+  // addEventListener everywhere it perhaps should, and also scripts that listen for events
+  // by setting .on*= properties will get events firing.)
+  // Note: log overrides ignore if event is listed in both - event will fire and be logged
   ignoreEvents:     ['unload', 'beforeunload']
 };
 
