@@ -80,16 +80,10 @@ function injectDebugJS(win) {
       win.wrappedJSObject.document.addEventListener = /* on document */
       /* more objects needed? Probably.. */
       function(evt, func, capture) {
-        var debugme;
-        if(evt === 'click' && this.tagName === 'DIV' && func.toString().indexOf('&&(!a||f.event.triggered!')>-1) {
-          // try{undefined();}catch(e){console.log( this + ' ' + this.tagName + ' ' + '\n' + e.stack.substr(-550))}
-          debugme = true;
-        }
-        if(prefs.logEvents.indexOf(evt) > -1 || debugme) {
+        if(prefs.logEvents.indexOf(evt) > -1) {
           ael.call(this, evt, (function(func){
             return function(e) {
               console.log('will now fire ' + e.type + ' on ' + e.target + ', listener ' + func);
-              debugger;
               return func.call(this, e);
             };
           })(func), capture);
