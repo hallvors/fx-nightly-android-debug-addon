@@ -17,6 +17,6 @@ To use,
 5. Open the install.html page in Firefox Nightly 
 6. Tap the link. You should now be asked if you really want to install the addon.
 
-(The install.sh / install.bat file will automate steps 2-5 above - until the "tap the link" part.)
+(The build / install.bat script will automate steps 2-5 above - until the "tap the link" part.)
 
 When updating the addon with new debug code, you should probably go to about:addons on the device to remove the old version. Also, unless you're very carefully undoing all the addon does in an uninstall handler, it may be a good idea to also restart Firefox Nightly before re-installing the addon.
