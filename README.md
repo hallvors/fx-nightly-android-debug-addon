@@ -10,6 +10,7 @@ This is an addon for Firefox on Android, injecting JavaScript into pages for deb
 ## Usage
 
 To use, 
+
 1. Edit bootstrap.js to add/enable/disable debug code that gets injected. 
 2. Create a zip file (with an .xpi extension) 
 3. Push it to the device using adb
